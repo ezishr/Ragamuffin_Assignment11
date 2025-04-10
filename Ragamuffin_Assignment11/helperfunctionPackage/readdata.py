@@ -1,3 +1,14 @@
+# File Name: readdata.py
+# Student Name: Annapoorna Nair
+# Email: nairap@mail.uc.edu
+# Assignment Number: Assignment 11
+# Due Date: April 15, 2025
+# Course #/Section: IS 4010 - 001
+# Semester/Year: Spring 2025
+# Brief Description of the assignment: Clean an excel sheet in a way the code can work with similar sheets
+# Brief Description of what this module does: Make sure gross price will have 2 decimals & delete duplicate rows within excel after reading data
+# Citations: Chatgpt helped with a lot of the code
+# Anything else that's relevant: N/A
 
 import csv
 #from curses import raw

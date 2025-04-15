@@ -1,68 +1,15 @@
+from helperfunctionPackage.readdata import *
+from zip_codePackage.zip_code import *
 
-import csv
-#from curses import raw
-def read_CSV_file(file_name):
-    '''
-    Reads a particular CSV file into a list of lists.
-    fuelPurchaseData.csv
-    The first row is assumed to be a header and is skipped
-    @return list: the list of lists that was created from the file
-    '''
-    csv_data = []
-    path = "./Data/" + file_name
-    with open(f"./Data/{file_name}", newline='') as f:
-        reader = csv.reader(f, delimiter=',')
-        header = next(reader)
-        for row in reader:
-            csv_data.append(row)
-        return csv_data
+data, header = read_CSV_file(file_name = 'fuelPurchaseData.csv')
+#print(f'header: {header}\n\nfirst row: {data[0:8]}')
+
+data = gross_price_two_decimals(data)
+
+data = detect_pepsi(data, header)
 
 
-data = read_CSV_file(file_name = 'fuelPurchaseData.csv')
-print(data[0])
 
-"""
-def two_decimals_only(raw_data, output_filename):
-    Round Gross price to two decimal places
-    @return: gross price so that it is properly rounded
-    output_file = './Data/' + output_filename
 
-    column_index = 2
+# NEED: function to get rows missing zip code
 
-    for i in range(len(data) - 1):
-        try:
-            data[i][column_index] = round(float(data[i][2]), 2)
-        except ValueError:
-            pass
-
-        with open(output_file, mode='w', newline='') as outfile:
-            writer = csv.writer(outfile)
-            writer.writerows(data[i])
-
-out = two_decimals_only(raw_data=data, output_filename='cleanedData.csv')
-"""
-
-def delete_duplicates(raw_data):
-    """
-    Delete duplicate rows
-    @return: excel data without any duplicate rows 
-    """
-    output_file = './Data/cleanedData.csv'
-
-    unique_rows = []
-    seen = set()
-
-    
-
-    for i in range(len(raw_data) - 1):
-        row = raw_data[i].copy()
-        row.pop(0)
-        row_tuple = tuple(row)  
-        if row_tuple not in seen:
-            unique_rows.append(raw_data[i])
-            seen.add(row_tuple)
-
-    return seen, unique_rows
-
-seen, unique_rows = delete_duplicates(raw_data = data)
-print(f'seen len: {len(seen)}\n unique len: {len(unique_rows)}')

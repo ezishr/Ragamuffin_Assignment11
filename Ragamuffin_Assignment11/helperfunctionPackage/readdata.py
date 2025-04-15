@@ -11,7 +11,6 @@
 # Anything else that's relevant: N/A
 
 import csv
-#from curses import raw
 def read_CSV_file(file_name):
     '''
     Reads a particular CSV file into a list of lists.
@@ -26,11 +25,8 @@ def read_CSV_file(file_name):
         header = next(reader)
         for row in reader:
             csv_data.append(row)
-        return csv_data
-
-
-data = read_CSV_file(file_name = 'fuelPurchaseData.csv')
-print(data[0])
+       
+    return csv_data, header
 
 """
 def two_decimals_only(raw_data, output_filename):
@@ -53,27 +49,56 @@ def two_decimals_only(raw_data, output_filename):
 out = two_decimals_only(raw_data=data, output_filename='cleanedData.csv')
 """
 
-def delete_duplicates(raw_data):
+def delete_duplicates(data):
     """
+    NOT DONE
     Delete duplicate rows
     @return: excel data without any duplicate rows 
     """
-    output_file = './Data/cleanedData.csv'
+    #output_file = './Data/cleanedData.csv'
 
     unique_rows = []
     seen = set()
 
-    
-
-    for i in range(len(raw_data) - 1):
-        row = raw_data[i].copy()
-        row.pop(0)
+    for i in range(len(data) - 1):
+        row = data[i].copy()
+        print(f'index: {i}')
+        #print(row)
+        #row.pop(0)
         row_tuple = tuple(row)  
         if row_tuple not in seen:
-            unique_rows.append(raw_data[i])
+            unique_rows.append(data[i])
             seen.add(row_tuple)
+        print(f'seen len:{len(seen)}\nunique_rows len: {len(unique_rows)}')
 
     return seen, unique_rows
 
-seen, unique_rows = delete_duplicates(raw_data = data)
-print(f'seen len: {len(seen)}\n unique len: {len(unique_rows)}')
+def gross_price_two_decimals(data):
+    """
+    Make Gross Price column to have exactly 2 decimal places.
+    @param data list: The converted CSV data to process.
+    @return data list: The data after being processed.
+    """
+
+    for row in data:
+        row[2] = f"{float(row[2]):.2f}"
+    return data
+
+
+
+def detect_pepsi(data, header):
+    """
+    Delete rows having Fuel Type of Pepsi and write these rows into a CSV file named dataAnomalies.
+    @param data list: The raw data to process.
+    @param header list: Header of raw data.
+    @return collected_row list: Data after being deleted with rows having Pepsi.
+    """
+
+    collected_row = [row for row in data if row[5].strip().lower() != 'pepsi']
+    anomalies_row = [row for row in data if row[5].strip().lower() == 'pepsi']
+    with open('Data/dataAnomalies.csv', mode='w', newline='', encoding='utf-8') as f:
+        writer = csv.writer(f, delimiter=',')
+        writer.writerow(header)
+        writer.writerows(anomalies_row)
+
+    return collected_row

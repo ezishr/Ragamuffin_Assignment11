@@ -29,11 +29,16 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="mainPackage\main.py" />
+    <Compile Include="zip_codePackage\zip_code.py" />
+    <Compile Include="zip_codePackage\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="helperfunctionPackage\" />
     <Folder Include="mainPackage\" />
     <Folder Include="Data\" />
+    <Folder Include="zip_codePackage\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Data\fuelPurchaseData.csv" />

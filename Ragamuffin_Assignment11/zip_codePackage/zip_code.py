@@ -16,7 +16,9 @@ def request_api_zipcode(city, state_name):
        ("country","us"),
     );
 
-    response = requests.get('https://app.zipcodebase.com/api/v1/code/city', params=params);
+    response = requests.get('https://app.zipcodebase.com/api/v1/code/city', params=params)
+    print(response)
+    print('\n')
     selected_zipcode = response.json()['results'][0]
 
     return selected_zipcode

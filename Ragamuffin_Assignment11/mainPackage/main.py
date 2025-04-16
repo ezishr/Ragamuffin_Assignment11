@@ -8,7 +8,10 @@ data = gross_price_two_decimals(data)
 
 data = detect_pepsi(data, header)
 
+zip_code = request_api_zipcode(city = 'Cincinnati', state_name = 'Ohio')
+print(zip_code)
 
+print(data[0])
 
 
 # NEED: function to get rows missing zip code

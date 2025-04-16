@@ -1,4 +1,4 @@
-from helperfunctionPackage.readdata import *
+from helperfunctionPackage.helperFunction import *
 from zip_codePackage.zip_code import *
 import re
 import requests

@@ -87,6 +87,7 @@ class HelperFunction:
             if row_tuple not in seen:
                 unique_rows.append(row)
                 seen.add(row_tuple)
+                # Currently, we don't find any duplicate rows in the data even if we remove the Transaction ID item from the row.
 
         # Restore the unique_rows back to data attribute.
         self.data = unique_rows

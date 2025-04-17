@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>b41b0c97-cfe3-4b94-9b5e-b3bfa6b7b376</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>CleanDataPackage\cleanData.py</StartupFile>
+    <StartupFile>mainPackage\main.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -33,6 +33,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="mainPackage\main.py" />
+    <Compile Include="WriteToCSVPackage\write_to_csv.py" />
+    <Compile Include="WriteToCSVPackage\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="zip_codePackage\zip_code.py" />
     <Compile Include="zip_codePackage\__init__.py">
       <SubType>Code</SubType>
@@ -43,6 +47,7 @@
     <Folder Include="helperfunctionPackage\" />
     <Folder Include="mainPackage\" />
     <Folder Include="Data\" />
+    <Folder Include="WriteToCSVPackage\" />
     <Folder Include="zip_codePackage\" />
   </ItemGroup>
   <ItemGroup>

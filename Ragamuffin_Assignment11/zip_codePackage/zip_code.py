@@ -1,6 +1,6 @@
 # File Name: zip_code.py
 # Student Name: Eirlys Vo
-# Email: nairap@mail.uc.edu, vopq@mail.uc.edu
+# Email: vopq@mail.uc.edu
 # Assignment Number: Assignment 11
 # Due Date: April 17, 2025
 # Course #/Section: IS 4010 - 001

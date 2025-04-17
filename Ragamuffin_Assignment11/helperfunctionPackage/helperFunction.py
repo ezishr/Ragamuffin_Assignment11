@@ -105,11 +105,11 @@ class HelperFunction:
         # Get the index of Fuel Type column.
         fuel_type_idx = self.header.index('Fuel Type')
 
-        # List comprehesion: loop through each row and check Fuel Type item if it's Pepsi or not, store only the False ones.
-        self.data = [row for row in self.data if row[fuel_type_idx].strip().lower() != 'pepsi']
-
         # List comprehesion: loop through each row and check Fuel Type item if it's Pepsi or not, store only the True ones.
         anomalies_row = [row for row in self.data if row[fuel_type_idx].strip().lower() == 'pepsi']
+
+        # List comprehesion: loop through each row and check Fuel Type item if it's Pepsi or not, store only the False ones.
+        self.data = [row for row in self.data if row[fuel_type_idx].strip().lower() != 'pepsi']
         
         # Write the anomalies_row into CSV data file and save in Data folder.
         to_csv = Write_To_CSV(path = 'Data/dataAnomalies.csv', data = anomalies_row, header = self.header)

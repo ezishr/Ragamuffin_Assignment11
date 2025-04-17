@@ -1,21 +1,7 @@
-from helperfunctionPackage.helperFunction import *
-from zip_codePackage.zip_code import *
-import re
-import requests
+from CleanDataPackage.cleanData import *
 
-
-data, header = read_CSV_file(file_name = 'fuelPurchaseData.csv')
-#print(f'header: {header}\n\nfirst row: {data[0:8]}')
-
-data = gross_price_two_decimals(data)
-
-data = detect_pepsi(data, header)
-
-zip_code = request_api_zipcode(city = 'Cincinnati', state_name = 'OH')
-print(zip_code)
-
-print(data[0])
-
-
-# NEED: function to get rows missing zip code
+if __name__ == "__main__":
+    clean = clean_full_data(csv_link = "Data/fuelPurchaseData.csv")
+    data = clean.clean_data()
+    print(data[0])
 
